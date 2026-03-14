@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
     do {
         choice = -1;
         display_menu();
-        while (choice <= 1)
+        while (choice < 1)
             choice = get_user_menu_choice("Enter choice");
 
         switch (choice) {
@@ -215,7 +215,7 @@ void free_image_array(unsigned char **image, int height) {
  * @return unsigned char** 2D array of image pixels, or NULL if reading fails
  */
 unsigned char **read_pgm_image(const char *filename, int *height, int *width, int *max_gray) {
-    FILE *file = fopen(filename, "r");
+    FILE* file = fopen(filename, "r");
     if (file == NULL) {
         printf("Error: Could not open file %s\n", filename);
         return NULL;
@@ -411,7 +411,7 @@ int save_pgm_image(const char *filename, unsigned char **pixels, int height, int
     }
 
     /* Write PGM header */
-    fprintf(file, "P1\n");
+    fprintf(file, "P2\n");
     fprintf(file, "%d %d\n", width, height);
     fprintf(file, "%d\n", max_gray);
 
